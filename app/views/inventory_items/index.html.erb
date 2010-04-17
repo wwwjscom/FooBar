@@ -1,0 +1,10 @@
+<h1>All Inventory Items</h1>
+
+<%= link_to "New", new_inventory_item_path %><br />
+<% @items.each do |i| %>
+	<p>Name: <%= i.name %></p>
+	<p>
+		<%= link_to "Edit", edit_inventory_item_path(i) %> | 
+		<%= link_to "Delete", inventory_item_path(i), :method => :delete %>
+	</p>
+<% end %>
