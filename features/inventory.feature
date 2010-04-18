@@ -15,13 +15,13 @@ Feature: Managing Inventory Items
 		
 	Scenario: Populate edit for with data
 		Given I have a test item
-		And I am on path /inventory_items		
+		And I am on path /inventory_items	
 		When I follow "Edit"
 		Then the "Name" field should contain "Apple"
 		
 	Scenario: Edit
 		Given I have a test item
-		And I am on path /inventory_items		
+		And I am on path /inventory_items
 		When I follow "Edit"
 		And I fill in "Name" with "My new item"
 		And I press "Update"

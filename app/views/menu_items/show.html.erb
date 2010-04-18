@@ -1,0 +1,18 @@
+<p>
+  <b>Price:</b>
+  <%=h @menu_item.price %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%=h @menu_item.name %>
+</p>
+
+<p>
+  <b>Ingrediants:</b>
+  <%=h @menu_item.ingrediants %>
+</p>
+
+
+<%= link_to 'Edit', edit_menu_item_path(@menu_item) %> |
+<%= link_to 'Back', menu_items_path %>
