@@ -57,18 +57,6 @@ class MenuItemsController < ApplicationController
   # PUT /menu_items/1
   # PUT /menu_items/1.xml
   def update
-    @menu_item = MenuItem.find(params[:id])
-
-#	logger.info "----#{@menu_item[:ingrediants].class}"
-
-#		params[:menu_item][:ingrediants].split('\n').each do |line|
-#			item, amt = line.split(": ")
-#			#unless InventoryItem.exists?(item)
-#				errors.add_to_base("Invalid Ingrediant")
-#			#end
-#			return false
-#		end
-
 
     respond_to do |format|
       if @menu_item.update_attributes(params[:menu_item])

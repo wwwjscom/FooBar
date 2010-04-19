@@ -1,23 +1,5 @@
-<h1>New menu_item</h1>
-
-<% form_for(@menu_item) do |f| %>
-  <%= f.error_messages %>
-
-  <p>
-    <%= f.label :price %><br />
-    <%= f.text_field :price %>
-  </p>
-  <p>
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </p>
-  <p>
-    <%= f.label :ingrediants %><br />
-    <%= f.text_area :ingrediants %>
-  </p>
-  <p>
-    <%= f.submit 'Create' %>
-  </p>
+<% semantic_form_for @menu_item do |f| %>
+	<%= f.input :price, :label => 'Price', :hint => "Enter price in pennies" %>
+	<%= f.input :name, :label => 'Name' %>
+	<%= f.input :inventory_items, :as => :check_boxes, :label => 'Ingredients' %>
 <% end %>
-
-<%= link_to 'Back', menu_items_path %>
