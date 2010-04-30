@@ -6,7 +6,7 @@
 		<title>Ruby on Rails: Welcome aboard</title> 
 	</head>
 	<body>
-		<%= link_to "Home", root_path %> | <%= link_to "Menu Items", menu_items_path %> | <%= link_to "Inventory Items", inventory_items_path %><br />
+		<%= render :partial => "/layouts/header_nav" %><br />
 		<%= flash[:success] unless flash[:success].blank? %>
 		<%= yield %>
 	</body> 
