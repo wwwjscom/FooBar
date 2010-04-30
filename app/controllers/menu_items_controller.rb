@@ -47,10 +47,7 @@ class MenuItemsController < ApplicationController
 	menu_item_did_save = @menu_item.save
 	
 	# Save all the ingredients
-	params[:ingredients].each do |i, j|
-		j[:menu_item_id] = @menu_item[:id]
-		Ingredient.create(j)
-	end
+	save_ingrediants
 
     respond_to do |format|
       if menu_item_did_save
@@ -70,11 +67,7 @@ class MenuItemsController < ApplicationController
     @menu_item = MenuItem.find(params[:id])
 
 	@menu_item.ingredients.destroy_all
-	# Save all the ingredients
-	params[:ingredients].each do |i, j|
-		j[:menu_item_id] = @menu_item[:id]
-		Ingredient.create(j)
-	end
+	save_ingrediants
 
     respond_to do |format|
       if @menu_item.update_attributes(params[:menu_item])
@@ -99,4 +92,19 @@ class MenuItemsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
+
+	private #------------------
+	
+	
+	def save_ingrediants
+		# Save all the ingredients
+		params[:ingredients].each do |i, ingredient_hash|
+			# Only add ingredients that have values
+			if ingredient_hash[:amount].to_i > 0
+				ingredient_hash[:menu_item_id] = @menu_item[:id]
+				Ingredient.create(ingredient_hash)
+			end
+		end
+	end
 end
