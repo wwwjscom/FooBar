@@ -25,7 +25,7 @@ class MenuItemsController < ApplicationController
   # GET /menu_items/new.xml
   def new
     @menu_item = MenuItem.new
-	@ingredients_list = InventoryItem.ids_names_hash
+	@ingredients_list = InventoryItem.all
 	
     respond_to do |format|
       format.html # new.html.erb
@@ -36,7 +36,7 @@ class MenuItemsController < ApplicationController
   # GET /menu_items/1/edit
   def edit
     @menu_item = MenuItem.find(params[:id])
-	@ingredients_list = InventoryItem.ids_names_hash
+	@ingredients_list = InventoryItem.all
   end
 
   # POST /menu_items
