@@ -3,7 +3,6 @@ class CreateMenuItems < ActiveRecord::Migration
     create_table :menu_items do |t|
       t.integer :price
       t.string :name
-      t.text :ingrediants
 
       t.timestamps
     end

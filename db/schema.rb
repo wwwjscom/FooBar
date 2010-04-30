@@ -9,7 +9,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100417235850) do
+ActiveRecord::Schema.define(:version => 20100430054754) do
+
+  create_table "ingredients", :force => true do |t|
+    t.integer  "menu_item_id"
+    t.integer  "inventory_item_id"
+    t.integer  "amount",            :default => 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "inventory_items", :force => true do |t|
     t.string "name"
@@ -18,14 +26,8 @@ ActiveRecord::Schema.define(:version => 20100417235850) do
   create_table "menu_items", :force => true do |t|
     t.integer  "price"
     t.string   "name"
-    t.text     "ingrediants"
     t.datetime "created_at"
     t.datetime "updated_at"
-  end
-
-  create_table "menu_items_inventory_items", :id => false, :force => true do |t|
-    t.integer "menu_item_id"
-    t.integer "inventory_item_id"
   end
 
 end

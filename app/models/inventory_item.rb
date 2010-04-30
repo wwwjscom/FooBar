@@ -1,3 +1,8 @@
 class InventoryItem < ActiveRecord::Base
-	#has_and_belongs_to_many :menu_items
+	
+	has_many :ingredient
+	
+	def self.ids_names_hash
+		find(:all).map { |i| { :id => i.id, :name => i.name } }
+	end
 end

@@ -9,8 +9,13 @@
 </p>
 
 <p>
-  <b>Ingrediants:</b>
-  <%=h @menu_item.ingrediants %>
+	<% @menu_item.ingredients.each do |i| %>
+		<% if i.amount > 1%>
+			<%=h i.amount %> <%=h i.name.pluralize %><br />
+		<% else %>
+			<%=h i.amount %> <%=h i.name %><br />
+		<% end %>
+	<% end %>
 </p>
 
 

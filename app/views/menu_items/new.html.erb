@@ -11,10 +11,21 @@
     <%= f.label :name %><br />
     <%= f.text_field :name %>
   </p>
-  <p>
-    <%= f.label :ingrediants %><br />
-    <%= f.text_area :ingrediants %>
-  </p>
+
+	<h3>Ingredient Amounts</h3>
+	
+	<% fields_for :ingredients do |t| %>
+		<% @ingredients_list.each do |i| %>
+			<% t.fields_for i[:name].to_sym do |i_form| %>
+				<p>
+					<%= i_form.hidden_field :inventory_item_id, :value => i[:id] %>
+					<%= i_form.label :amount, i[:name] %>: 
+					<%= i_form.text_field :amount, :size => 2, :value => 0 %>
+				</p>
+			<% end %>
+		<% end %>
+	<% end %>
+	
   <p>
     <%= f.submit 'Create' %>
   </p>

@@ -3,7 +3,7 @@ class MenuItemsController < ApplicationController
   # GET /menu_items.xml
   def index
     @menu_items = MenuItem.all
-
+	
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @menu_items }
@@ -25,7 +25,9 @@ class MenuItemsController < ApplicationController
   # GET /menu_items/new.xml
   def new
     @menu_item = MenuItem.new
-
+	@ingredients = Ingredient.new
+	@ingredients_list = InventoryItem.ids_names_hash
+	
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @menu_item }
@@ -42,8 +44,18 @@ class MenuItemsController < ApplicationController
   def create
     @menu_item = MenuItem.new(params[:menu_item])
 
+	menu_item_did_save = @menu_item.save
+	
+	# Save all the ingredients
+	params[:ingredients].each do |i, j|
+		logger.info "J: #{j}"
+		logger.info "I: #{i}"
+		j[:menu_item_id] = @menu_item[:id]
+		Ingredient.create(j)
+	end
+
     respond_to do |format|
-      if @menu_item.save
+      if menu_item_did_save
         flash[:notice] = 'MenuItem was successfully created.'
         format.html { redirect_to(@menu_item) }
         format.xml  { render :xml => @menu_item, :status => :created, :location => @menu_item }
@@ -58,17 +70,6 @@ class MenuItemsController < ApplicationController
   # PUT /menu_items/1.xml
   def update
     @menu_item = MenuItem.find(params[:id])
-
-#	logger.info "----#{@menu_item[:ingrediants].class}"
-
-#		params[:menu_item][:ingrediants].split('\n').each do |line|
-#			item, amt = line.split(": ")
-#			#unless InventoryItem.exists?(item)
-#				errors.add_to_base("Invalid Ingrediant")
-#			#end
-#			return false
-#		end
-
 
     respond_to do |format|
       if @menu_item.update_attributes(params[:menu_item])
