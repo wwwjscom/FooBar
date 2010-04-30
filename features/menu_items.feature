@@ -57,10 +57,10 @@ Feature: Menu item operations
 		And I should not see "Banana"
 		
 		Scenario: Add an ingredient thats > 0 to a value of 0.  Doing so should make it so it does not get inserted into the db again.
-			Given I have an inventory item "Banana"
-			And I am on the path /menu_items
-			When I follow "New menu_item"
-			And I fill in "Bananas" with "0"
-			And I press "Create"
-			Then I should not see "Bananas"
-			And I should not see "Banana"
+		Given I have an inventory item "Banana"
+		And I am on the path /menu_items
+		When I follow "New menu_item"
+		And I fill in "Bananas" with "0"
+		And I press "Create"
+		Then I should not see "Bananas"
+		And I should not see "Banana"
