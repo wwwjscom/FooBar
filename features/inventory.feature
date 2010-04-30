@@ -14,13 +14,13 @@ Feature: Managing Inventory Items
 		And I should see "My new item"
 		
 	Scenario: Populate edit for with data
-		Given I have a test item
+		Given I have an inventory item
 		And I am on path /inventory_items	
 		When I follow "Edit"
 		Then the "Name" field should contain "Apple"
 		
 	Scenario: Edit
-		Given I have a test item
+		Given I have an inventory item
 		And I am on path /inventory_items
 		When I follow "Edit"
 		And I fill in "Name" with "My new item"
@@ -30,7 +30,7 @@ Feature: Managing Inventory Items
 		And I should see "My new item"
 		
 	Scenario: Delete item
-		Given I have a test item
+		Given I have an inventory item
 		And I am on path /inventory_items
 		When I follow "Delete"
 		Then I should see "Inventory item deleted"

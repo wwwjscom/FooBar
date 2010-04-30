@@ -25,7 +25,6 @@ class MenuItemsController < ApplicationController
   # GET /menu_items/new.xml
   def new
     @menu_item = MenuItem.new
-	@ingredients = Ingredient.new
 	@ingredients_list = InventoryItem.ids_names_hash
 	
     respond_to do |format|
@@ -37,6 +36,7 @@ class MenuItemsController < ApplicationController
   # GET /menu_items/1/edit
   def edit
     @menu_item = MenuItem.find(params[:id])
+	@ingredients_list = InventoryItem.ids_names_hash
   end
 
   # POST /menu_items
@@ -48,8 +48,6 @@ class MenuItemsController < ApplicationController
 	
 	# Save all the ingredients
 	params[:ingredients].each do |i, j|
-		logger.info "J: #{j}"
-		logger.info "I: #{i}"
 		j[:menu_item_id] = @menu_item[:id]
 		Ingredient.create(j)
 	end
@@ -70,6 +68,13 @@ class MenuItemsController < ApplicationController
   # PUT /menu_items/1.xml
   def update
     @menu_item = MenuItem.find(params[:id])
+
+	@menu_item.ingredients.destroy_all
+	# Save all the ingredients
+	params[:ingredients].each do |i, j|
+		j[:menu_item_id] = @menu_item[:id]
+		Ingredient.create(j)
+	end
 
     respond_to do |format|
       if @menu_item.update_attributes(params[:menu_item])

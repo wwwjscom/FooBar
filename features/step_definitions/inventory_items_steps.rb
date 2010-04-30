@@ -1,4 +1,4 @@
-Given /^I have a test item$/ do
+Given /^I have an inventory item$/ do
 	InventoryItem.create(:name => "Apple")
 end
 

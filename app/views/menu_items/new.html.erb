@@ -19,7 +19,7 @@
 			<% t.fields_for i[:name].to_sym do |i_form| %>
 				<p>
 					<%= i_form.hidden_field :inventory_item_id, :value => i[:id] %>
-					<%= i_form.label :amount, i[:name] %>: 
+					<%= i_form.label :amount, i[:name].capitalize.pluralize %>: 
 					<%= i_form.text_field :amount, :size => 2, :value => 0 %>
 				</p>
 			<% end %>

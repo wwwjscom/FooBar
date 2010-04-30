@@ -5,4 +5,5 @@ class Ingredient < ActiveRecord::Base
 	def name
 		InventoryItem.find(inventory_item_id).name
 	end
+
 end
