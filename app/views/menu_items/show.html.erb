@@ -10,11 +10,7 @@
 
 <p>
 	<% @menu_item.ingredients.each do |i| %>
-		<% if i.amount > 1%>
-			<%=h i.amount %> <%=h i.name.pluralize %><br />
-		<% else %>
-			<%=h i.amount %> <%=h i.name %><br />
-		<% end %>
+		<%=h i.amount %> <%=  (i.amount > 1) ? i.name.pluralize : i.name %><br />
 	<% end %>
 </p>
 
