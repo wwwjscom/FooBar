@@ -41,6 +41,7 @@ class OrdersController < ApplicationController
   # POST /orders.xml
   def create
     @order = Order.new(params[:order])
+    @order.set_total = @order[:menu_items]
 
     respond_to do |format|
       if @order.save

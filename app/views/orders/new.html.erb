@@ -3,12 +3,12 @@
 <% form_for(@order) do |f| %>
   <%= f.error_messages %>
 
-	<% MenuItem.all.each do |m| %>
-		<% fields_for m.name.to_sym do |ff| %>
-		<p>
-			<%= ff.label :amount, m.name %>
-			<%= ff.text_field :amount, :value => 0, :size => 2 %> | Price: <%= number_to_currency(m.price, :unit => "$") %>
-		</p>
+	<% f.fields_for :menu_items do |foo| %>
+		<% MenuItem.all.each do |m| %>
+			<p>
+				<%= foo.label m.id, m.name %>
+				<%= foo.text_field m.id, :value => 0, :size => 2 %> | Price: <%= number_to_currency(m.price, :unit => "$") %>
+			</p>
 		<% end %>
 	<% end %>
 
