@@ -7,8 +7,10 @@
     <%= stylesheet_link_tag "scaffold" %>
 	</head>
 	<body>
-		<%= render :partial => "/layouts/header_nav" %><br />
-		<%= flash[:success] unless flash[:success].blank? %>
-		<%= yield %>
+    <div id="content">
+      <%= render :partial => "/layouts/header_nav" %><br />
+      <%= flash[:success] unless flash[:success].blank? %>
+      <%= yield %>
+    </div>
 	</body> 
 </html>
