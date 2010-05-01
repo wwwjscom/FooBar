@@ -3,6 +3,16 @@
 <% form_for(@order) do |f| %>
   <%= f.error_messages %>
 
+	<% f.fields_for :menu_items do |foo| %>
+		<% MenuItem.all.each do |m| %>
+			<p>
+        <% value = @order[:menu_items][m.id] ||= 0 %> 
+				<%= foo.label m.id, m.name %>
+        <%= foo.text_field m.id, :value => value, :size => 2 %> | Price: <%= number_to_currency(m.price, :unit => "$") %>
+			</p>
+		<% end %>
+	<% end %>
+
   <p>
     <%= f.submit 'Update' %>
   </p>
