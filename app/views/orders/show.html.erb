@@ -1,4 +1,10 @@
+<% @order.menu_items.each do |menu_item_id, amt| %>
+  <% m = MenuItem.find(menu_item_id) %>
+  <%= (amt.to_i > 1) ? m.name.capitalize.pluralize : m.name.capitalize %> (x<%= amt %>) <%= number_to_currency(m.price, :unit => "$") %>/each
+<% end %>
+<br />
 Total: <%= number_to_currency(@order.total, :unit => "$") %>
+<br />
 
 <%= link_to 'Edit', edit_order_path(@order) %> |
 <%= link_to 'Back', orders_path %>

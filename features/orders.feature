@@ -14,4 +14,5 @@ Feature: Test all aspects of placing an order
 		When I follow "New Order"
 		And I fill in "Test" with "2"
 		And I press "Create"
-		Then I should see "10.00"
+		Then I should see "$10.00"
+		And I should see "Tests (x2) $5.00/each"
