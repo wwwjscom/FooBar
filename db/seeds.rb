@@ -6,17 +6,17 @@
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Major.create(:name => 'Daley', :city => cities.first)
 
-Bar.create(:cash => 200)
+Bar.create(:cash => 20000)
 
-InventoryItem.create(:name => "Bread", :quantity => 10, :wholesale_cost => 1)
-InventoryItem.create(:name => "Apple", :quantity => 10, :wholesale_cost => 1)
-InventoryItem.create(:name => "OJ", :quantity => 10, :wholesale_cost => 2)
-InventoryItem.create(:name => "Egg", :quantity => 10, :wholesale_cost => 2)
-InventoryItem.create(:name => "Bacon", :quantity => 20, :wholesale_cost => 1)
-InventoryItem.create(:name => "Coffee", :quantity => 20, :wholesale_cost => 3)
+InventoryItem.create(:name => "Bread", :quantity => 10, :wholesale_cost => 100)
+InventoryItem.create(:name => "Apple", :quantity => 10, :wholesale_cost => 100)
+InventoryItem.create(:name => "OJ", :quantity => 10, :wholesale_cost => 200)
+InventoryItem.create(:name => "Egg", :quantity => 10, :wholesale_cost => 200)
+InventoryItem.create(:name => "Bacon", :quantity => 20, :wholesale_cost => 100)
+InventoryItem.create(:name => "Coffee", :quantity => 20, :wholesale_cost => 300)
 
-MenuItem.create(:price => 5, :name => "Breakfast")
-MenuItem.create(:price => 10, :name => "Fix My Hangover")
+MenuItem.create(:price => 500, :name => "Breakfast")
+MenuItem.create(:price => 1000, :name => "Fix My Hangover")
 
 Ingredient.create(:inventory_item_id => 1, :menu_item_id => 1, :amount => 2)
 Ingredient.create(:inventory_item_id => 2, :menu_item_id => 1, :amount => 1)

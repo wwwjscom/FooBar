@@ -1,6 +1,6 @@
 class MenuItem < ActiveRecord::Base
 	has_many :ingredients, :class_name => "Ingredient"
-	
+
 	# Returns the amount of a particular ingredient that
 	# this menu item uses
 	def amount(inventory_item_id)

@@ -4,7 +4,7 @@
 <% @items.each do |i| %>
 	<p>Name: <%= i.name %></p>
 	<p>Quantity: <%= i.quantity %></p>
-	<p>Wholesale Cost: <%= number_to_currency i.wholesale_cost %></p>
+	<p>Wholesale Cost: <%= number_to_currency i.wholesale_cost.to_f/100 %></p>
 	<p>
 		<%= link_to "Edit", edit_inventory_item_path(i) %> | 
 		<%= link_to "Delete", inventory_item_path(i), :method => :delete %>

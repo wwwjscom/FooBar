@@ -1,6 +1,6 @@
 <p>
   <b>Price:</b>
-  <%=h @menu_item.price %>
+  <%=h number_to_currency @menu_item.price.to_f/100 %>
 </p>
 
 <p>

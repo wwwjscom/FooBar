@@ -41,7 +41,7 @@ Feature: Test the bar functions
 		When I follow "New"
 		And I fill in "Name" with "My new item"
 		And I fill in "Quantity" with "5"
-		And I fill in "Wholesale cost" with "2"
+		And I fill in "Wholesale cost" with "200"
 		And I press "Create"
     And I follow "Home"
     Then I should see "Cash on hand: $-10.00"

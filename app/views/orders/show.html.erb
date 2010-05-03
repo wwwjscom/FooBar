@@ -1,9 +1,11 @@
 <% @order.menu_items.each do |menu_item_id, amt| %>
   <% m = MenuItem.find(menu_item_id) %>
-  <%= (amt.to_i > 1) ? m.name.capitalize.pluralize : m.name.capitalize %> (x<%= amt %>) <%= number_to_currency(m.price, :unit => "$") %>/each
+  <% if amt.to_i > 0 %>
+    <%= (amt.to_i > 1) ? m.name.capitalize.pluralize : m.name.capitalize %> (x<%= amt %>) <%= number_to_currency m.price.to_f/100 %>/each<br />
+  <% end %>
 <% end %>
 <br />
-Total: <%= number_to_currency(@order.total, :unit => "$") %>
+Total: <%= number_to_currency @order.total.to_f/100 %>
 <br />
 
 <%= link_to 'Edit', edit_order_path(@order) %> |

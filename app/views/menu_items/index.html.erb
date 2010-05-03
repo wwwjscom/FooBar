@@ -8,7 +8,7 @@
 
 <% @menu_items.each do |menu_item| %>
   <tr>
-    <td><%=h menu_item.price %></td>
+    <td><%=h number_to_currency menu_item.price.to_f/100 %></td>
     <td><%=h menu_item.name %></td>
     <td><%= link_to 'Show', menu_item %></td>
     <td><%= link_to 'Edit', edit_menu_item_path(menu_item) %></td>

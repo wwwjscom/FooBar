@@ -6,6 +6,6 @@ class Bar < ActiveRecord::Base
   end
 
   def self.cash
-    find(:first).cash
+    self.find(:first).cash
   end
 end

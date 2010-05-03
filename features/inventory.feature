@@ -10,7 +10,7 @@ Feature: Managing Inventory Items
     When I fill in the following:
       | Name | My new item |
       | Quantity | 5 |
-      | Wholesale cost | 2 |
+      | Wholesale cost | 200 |
 		And I press "Create"
 		Then I should see "Inventory item created"
 		And I should be on the path /inventory_items
