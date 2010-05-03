@@ -1,7 +1,1 @@
-<% form_for @item do |f| %>
-
-	<%= f.label :name %>: 
-	<%= f.text_field :name %>
-
-	<%= submit_tag :Create %>
-<% end %>
+<%= render :partial => "form_fields", :locals => { :new => true } %>

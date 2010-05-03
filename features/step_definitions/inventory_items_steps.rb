@@ -1,5 +1,5 @@
 Given /^I have an inventory item$/ do
-	InventoryItem.create(:name => "Apple")
+	InventoryItem.create(:name => "Apple", :quantity => 5)
 end
 
 Given /^I have an inventory item "(.+)"$/ do |name|

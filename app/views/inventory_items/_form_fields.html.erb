@@ -1,0 +1,13 @@
+<% form_for @item do |f| %>
+	<%= f.label :name %>: 
+	<%= f.text_field :name %>
+
+  <br />
+
+  <%= f.label :quantity %>:
+  <%= f.text_field :quantity, :size => 3 %>
+
+  <br />
+
+  <%= (new) ? (submit_tag :Create) : (submit_tag :Update) %>
+<% end %>
