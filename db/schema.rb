@@ -20,7 +20,8 @@ ActiveRecord::Schema.define(:version => 20100430214330) do
   end
 
   create_table "inventory_items", :force => true do |t|
-    t.string "name"
+    t.string  "name"
+    t.integer "quantity", :default => 0
   end
 
   create_table "menu_items", :force => true do |t|

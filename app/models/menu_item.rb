@@ -10,4 +10,15 @@ class MenuItem < ActiveRecord::Base
 			0
 		end
 	end
+
+  # Given a menu item and the amount of said item ordered,
+  # decrement the ingredient quantities accordingly.
+  def self.decrement_inventory(id, ordered_amt)
+    menu_item = find(id)
+    menu_item.ingredients.each do |ingredient|
+      inventory_item_id = ingredient.inventory_item_id
+      amt = menu_item.amount(inventory_item_id) * ordered_amt.to_i
+      return false unless InventoryItem.decrement(inventory_item_id, amt)
+    end
+  end
 end

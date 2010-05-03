@@ -31,7 +31,21 @@ Feature: Test all aspects of placing an order
 		And I have an order
 		And I am on the path /orders
 		When I follow "Edit"
-		And I fill in "Test" with "5"
+		And I fill in "Test" with "3"
 		And I press "Update"
-		Then I should see "Tests (x5) $5.00/each"
-		And I should see "$25.00"
+		Then I should see "Tests (x3) $5.00/each"
+		And I should see "$15.00"
+
+	Scenario: Ordering decrements the quantity of inventory items
+		Given I have a menu item with ingredients
+		And I have an order
+		Then inventory item "Apple" should have quantity "8"
+
+	Scenario: Ordering an order which cannot be fulfilled should error
+		Given I have a menu item with ingredients
+		And I have an order
+		And I am on the path /orders
+		When I follow "Edit"
+		And I fill in "Test" with "10"
+		And I press "Update"
+		Then I should see "1 error prohibited this order from being saved"
