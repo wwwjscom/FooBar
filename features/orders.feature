@@ -59,3 +59,7 @@ Feature: Test all aspects of placing an order
 		And I fill in "Test" with "10"
 		And I press "Update"
 		Then I should see "1 error prohibited this order from being saved"
+
+	Scenario: Shouldn't be able to order when no items exist
+		Given I am on the path /orders/new
+		Then I should not see "New order"

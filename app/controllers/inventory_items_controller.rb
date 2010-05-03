@@ -20,6 +20,7 @@ class InventoryItemsController < ApplicationController
 	
 	def update
 		@item = InventoryItem.find(params[:id])
+    @item.update_cash_on_hand(params[:inventory_item][:quantity].to_i)
 		
 		@item.update_attributes(params[:inventory_item])
 		flash[:success] = "Inventory item updated"

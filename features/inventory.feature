@@ -7,9 +7,10 @@ Feature: Managing Inventory Items
 	Scenario: Create
 		Given I am on path /inventory_items
 		When I follow "New"
-		And I fill in "Name" with "My new item"
-		And I fill in "Quantity" with "5"
-		And I fill in "Wholesale cost" with "2"
+    When I fill in the following:
+      | Name | My new item |
+      | Quantity | 5 |
+      | Wholesale cost | 2 |
 		And I press "Create"
 		Then I should see "Inventory item created"
 		And I should be on the path /inventory_items

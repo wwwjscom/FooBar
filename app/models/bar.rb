@@ -1,8 +1,8 @@
 class Bar < ActiveRecord::Base
   set_table_name "bar"
 
-  def self.cash=(cash)
-    find(:first).update_attribute(:cash, cash)
+  def self.cash=(new_cash)
+    self.find(:first).update_attribute(:cash, new_cash)
   end
 
   def self.cash

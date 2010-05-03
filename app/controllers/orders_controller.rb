@@ -26,6 +26,12 @@ class OrdersController < ApplicationController
   def new
     @order = Order.new
 
+    if MenuItem.all.size == 0
+      flash[:notice] = "You must create menu items before placing an order"
+      redirect_to menu_items_path
+      return false
+    end
+
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @order }

@@ -1,6 +1,5 @@
 class InventoryItem < ActiveRecord::Base
   before_create :set_cash_on_hand
-  before_update :update_cash_on_hand
 	has_many :ingredient
 
   # Decrement the quantity for the given item by the amt
@@ -13,13 +12,14 @@ class InventoryItem < ActiveRecord::Base
     end
   end
 
-  private #----------
-
-  def update_cash_on_hand
+  # This method gets caled when we increment our inventory supply,
+  # but not when a new order is created
+  def update_cash_on_hand(quantity)
     old_inventory = InventoryItem.find(id)
-    old_total = old_inventory.quantity * old_inventory.wholesale_cost
-    Bar.cash = Bar.cash - ((quantity * wholesale_cost) - old_total)
+    Bar.cash = (Bar.cash - (quantity - old_inventory.quantity) * wholesale_cost)
   end
+
+  private #----------
 
   def set_cash_on_hand
     Bar.cash = Bar.cash - (wholesale_cost * quantity)
