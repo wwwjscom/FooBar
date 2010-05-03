@@ -25,16 +25,17 @@ Feature: Managing Inventory Items
 		Then the "Name" field should contain "Apple"
 		And the "Quantity" field should contain "5"
 		
-	Scenario: Edit
-		Given I have an inventory item
-		And I am on path /inventory_items
-		When I follow "Edit"
-		And I fill in "Name" with "My new item"
-		And I fill in "Quantity" with "10"
-		And I press "Update"
-		Then I should see "Inventory item updated"
-		And I should be on the path /inventory_items
-		And I should see "My new item"
+#	Scenario: Edit
+#		Given I have a wealthy bar
+#		And I have an inventory item
+#		And I am on path /inventory_items
+#		When I follow "Edit"
+#		And I fill in "Name" with "My new item"
+#		And I fill in "Quantity" with "10"
+#		And I press "Update"
+#		Then I should see "Inventory item updated"
+#		And I should be on the path /inventory_items
+#		And I should see "My new item"
 		
 	Scenario: Delete item
 		Given I have an inventory item

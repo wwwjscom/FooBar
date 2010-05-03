@@ -21,6 +21,7 @@ class InventoryItem < ActiveRecord::Base
 
   private #----------
 
+
   def set_cash_on_hand
     Bar.cash = Bar.cash - (wholesale_cost * quantity)
   end

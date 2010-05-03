@@ -20,8 +20,16 @@ class InventoryItemsController < ApplicationController
 	
 	def update
 		@item = InventoryItem.find(params[:id])
-    @item.update_cash_on_hand(params[:inventory_item][:quantity].to_i)
+    new_quantity = params[:inventory_item][:quantity].to_i
+
+    unless Bar.enough_cash?((new_quantity - @item.quantity), @item.wholesale_cost)
+      flash[:error] = "Not enough cash on hand to complete transaction"
+      render :edit
+      return false
+    end
 		
+    @item.update_cash_on_hand(new_quantity)
+
 		@item.update_attributes(params[:inventory_item])
 		flash[:success] = "Inventory item updated"
 		redirect_to inventory_items_path

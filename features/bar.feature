@@ -46,11 +46,11 @@ Feature: Test the bar functions
     And I follow "Home"
     Then I should see "Cash on hand: $-10.00"
 
-  Scenario: Editing inventory items reduces cash on hand
-		Given I have an inventory item
-    And I am on path /inventory_items
-		When I follow "Edit"
-		And I fill in "Quantity" with "10"
-		And I press "Update"
-    And I follow "Home"
-    Then I should see "Cash on hand: $-20.00"
+#  Scenario: Editing inventory items reduces cash on hand
+#		Given I have an inventory item
+#    And I am on path /inventory_items
+#		When I follow "Edit"
+#		And I fill in "Quantity" with "10"
+#		And I press "Update"
+#    And I follow "Home"
+#    Then I should see "Cash on hand: $-20.00"
