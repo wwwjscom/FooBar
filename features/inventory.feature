@@ -24,7 +24,6 @@ Feature: Managing Inventory Items
 		When I follow "Edit"
 		Then the "Name" field should contain "Apple"
 		And the "Quantity" field should contain "5"
-		And the "Wholesale Cost" field should contain "2"
 		
 	Scenario: Edit
 		Given I have an inventory item
@@ -32,12 +31,10 @@ Feature: Managing Inventory Items
 		When I follow "Edit"
 		And I fill in "Name" with "My new item"
 		And I fill in "Quantity" with "10"
-		And I fill in "Wholesale Cost" with "1"
 		And I press "Update"
 		Then I should see "Inventory item updated"
 		And I should be on the path /inventory_items
 		And I should see "My new item"
-		And I should see "$1.00"
 		
 	Scenario: Delete item
 		Given I have an inventory item

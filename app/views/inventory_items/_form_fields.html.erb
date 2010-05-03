@@ -9,8 +9,10 @@
 
   <br />
 
-  <%= f.label :wholesale_cost %>:
-  <%= f.text_field :wholesale_cost, :size => 3 %>
+  <% if new %>
+    <%= f.label :wholesale_cost %>:
+    <%= f.text_field :wholesale_cost, :size => 3 %>
+  <% end %>
 
   <br />
 
