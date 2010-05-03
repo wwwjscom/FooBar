@@ -26,6 +26,16 @@ Feature: Test all aspects of placing an order
 		Then the "Test" field should contain "2"
 		And the "Foo" field should contain "0"
 
+	Scenario: Edit Order populate correctly (part 2)
+		Given I have a menu item with ingredients
+		And I have a menu item with ingredients
+		And I am on the path /orders
+		When I follow "New Order"
+		And I fill in "Test" with "2"
+		And I press "Create"
+		And I follow "Edit"
+		Then the "Test" field should contain "2"
+
 	Scenario: Update order
 		Given I have a menu item with ingredients
 		And I have an order

@@ -1,9 +1,21 @@
 class Order < ActiveRecord::Base
 	serialize :menu_items, Hash
-  before_save :set_total, :decrement_inventory
+  before_save :set_total, :decrement_inventory, :ids_to_i
 
   private #-----------
 	
+  # Sets all the menu_item_ids of the hash (ie the keys)
+  # to integers instead of strings which they are set to
+  # since they are passed through the form as strings
+  # automatically inside of the params hash
+  def ids_to_i
+    self.menu_items.each_pair do |k,v| 
+      self.menu_items.delete(k) 
+      self.menu_items[k.to_i] = v 
+    end
+  end
+
+
   # Sets the order total based on a hash containing
   # menu_item_ids => amount_in_order
 	def set_total
