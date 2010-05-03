@@ -3,6 +3,7 @@ class CreateInventoryItems < ActiveRecord::Migration
 	create_table :inventory_items do |t|
 		t.string :name
     t.integer :quantity, :default => 0
+    t.integer :wholesale_cost, :default => 0
 	end
   end
 
